@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vitrine 237</title>
+<link rel="icon" href="/logo.png">
+<meta property="og:title" content="Vitrine 237 · Sites web et WhatsApp pour commerces">
+<meta property="og:description" content="Site web, WhatsApp automatisé et Google Maps pour les commerces de Yaoundé et Douala. Livré en 72 h, dès 30 000 FCFA.">
+<meta name="description" content="Sites web, WhatsApp automatisé et Google Maps pour les commerces de Yaoundé et Douala. Livré en 72 h.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: en-tête collant, hero vert avec maquette de téléphone, sections claires alternées, rendez-vous en bas qui compose un message WhatsApp. Single theme by choice (brand world). */
+:root {
+  --forest: #0f3d2e;
+  --forest-2: #175a43;
+  --plantain: #f2b705;
+  --paper: #f6f5ee;
+  --card: #ffffff;
+  --ink: #13221c;
+  --muted: #56655e;
+  --line: #dde2d7;
+  --wa: #1fa855;
+  --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --body: "DM Sans", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+img, svg { max-width: 100%; }
+button, input, select, textarea { font: inherit; }
+:focus-visible { outline: 3px solid var(--plantain); outline-offset: 2px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+/* Header */
+.site-head { position: sticky; top: 0; z-index: 30; background: rgba(15,61,46,.97); color: #f4f2e8; border-bottom: 1px solid rgba(255,255,255,.08); }
+.site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 800; font-size: 21px; }
+.brand svg { width: 34px; height: 34px; }
+.brand b { color: var(--plantain); }
+nav.links { display: flex; gap: 22px; font-size: 15px; }
+nav.links a { text-decoration: none; color: #cdd7d0; }
+nav.links a:hover { color: #fff; }
+.head-cta { background: var(--plantain); color: var(--ink); text-decoration: none; font-weight: 700; padding: 9px 16px; border-radius: 10px; font-size: 15px; white-space: nowrap; }
+@media (max-width: 860px) { nav.links { display: none; } }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 12px; padding: 14px 22px; font-weight: 700; text-decoration: none; cursor: pointer; font-size: 16px; }
+.btn-yellow { background: var(--plantain); color: var(--ink); }
+.btn-yellow:hover { background: #ffc81f; }
+.btn-outline { border: 1.5px solid rgba(255,255,255,.45); color: #f4f2e8; background: transparent; }
+.btn-outline:hover { border-color: #fff; }
+.btn-wa { background: var(--wa); color: #fff; }
+.btn-wa:hover { background: #178f47; }
+.btn-dark { background: var(--forest); color: #fff; }
+.btn-dark:hover { background: var(--forest-2); }
+
+/* Hero */
+.hero { background: var(--forest); color: #f4f2e8; overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; padding-top: 56px; padding-bottom: 64px; }
+@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; padding-top: 36px; } }
+.eyebrow { display: inline-block; background: rgba(242,183,5,.15); color: var(--plantain); border: 1px solid rgba(242,183,5,.4); padding: 4px 12px; border-radius: 999px; font-size: 14px; font-weight: 500; margin-bottom: 18px; }
+.hero h1 { font-size: clamp(36px, 5.6vw, 58px); font-weight: 800; letter-spacing: -1px; }
+.hero h1 em { font-style: normal; color: var(--plantain); }
+.hero .lead { color: #d3dcd5; font-size: 19px; margin: 18px 0 28px; max-width: 50ch; }
+.hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.proof { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 32px; font-size: 14.5px; color: #bfcbc3; }
+.proof b { display: block; color: #fff; font-family: var(--display); font-size: 22px; }
+
+/* Phone mockup */
+.phone { justify-self: center; width: 300px; max-width: 100%; background: #0a1f17; border-radius: 34px; padding: 12px; box-shadow: 0 30px 60px rgba(0,0,0,.35); }
+.screen { background: #ece5dd; border-radius: 24px; overflow: hidden; }
+.chat-head { background: #075e54; color: #fff; display: flex; align-items: center; gap: 10px; padding: 12px 14px; font-size: 14.5px; }
+.chat-head .av { width: 32px; height: 32px; border-radius: 50%; background: var(--plantain); display: grid; place-items: center; color: var(--ink); font-weight: 800; font-size: 13px; }
+.chat-head small { display: block; opacity: .8; font-size: 12px; }
+.chat { padding: 14px 10px 18px; display: grid; gap: 8px; font-size: 13.5px; line-height: 1.4; }
+.msg { max-width: 85%; padding: 7px 10px; border-radius: 10px; color: #111; }
+.msg.in { background: #fff; justify-self: start; border-top-left-radius: 2px; }
+.msg.out { background: #dcf8c6; justify-self: end; border-top-right-radius: 2px; }
+.msg .t { display: block; text-align: right; font-size: 10.5px; color: #6b7a72; margin-top: 2px; }
+.msg .auto { display: block; font-size: 10.5px; color: #075e54; font-weight: 700; margin-bottom: 2px; }
+.mock-note { text-align: center; font-size: 12.5px; color: #9fb0a6; margin-top: 10px; }
+
+/* Sections */
+section { padding: 72px 0; }
+section.alt { background: #eef0e7; }
+.sec-head { max-width: 680px; margin-bottom: 36px; }
+.sec-head h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -.5px; }
+.sec-head p { color: var(--muted); margin-top: 12px; font-size: 18px; }
+
+.pains { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.pain { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+.pain h3 { font-size: 19px; margin-bottom: 8px; }
+.pain p { color: var(--muted); font-size: 15.5px; }
+.pain .fix { margin-top: 12px; color: var(--forest); font-weight: 700; font-size: 15px; }
+
+.services { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+.service { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+.service .ico { width: 46px; height: 46px; border-radius: 12px; background: var(--forest); display: grid; place-items: center; }
+.service .ico svg { width: 24px; height: 24px; }
+.service h3 { font-size: 20px; }
+.service p { color: var(--muted); font-size: 15.5px; }
+.service ul { margin: 0; padding-left: 18px; font-size: 15px; color: var(--ink); }
+.service.soon { border-style: dashed; background: transparent; }
+.badge { align-self: flex-start; font-size: 12.5px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--plantain); color: var(--ink); }
+
+.work { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; background: var(--forest); color: #f4f2e8; border-radius: 22px; padding: 32px; }
+@media (max-width: 860px) { .work { grid-template-columns: 1fr; padding: 24px; } }
+.work h3 { font-size: 28px; }
+.work p { color: #d3dcd5; margin: 12px 0 20px; }
+.work ul { margin: 0 0 22px; padding-left: 18px; color: #e6ece7; }
+.browser { background: #fff; border-radius: 14px; overflow: hidden; color: var(--ink); box-shadow: 0 20px 40px rgba(0,0,0,.25); }
+.browser .bar { background: #e5e8e1; padding: 8px 12px; display: flex; gap: 6px; align-items: center; }
+.browser .bar i { width: 10px; height: 10px; border-radius: 50%; background: #c3c9bf; display: block; }
+.browser .bar span { margin-left: 8px; font-size: 12px; color: var(--muted); background: #fff; padding: 2px 10px; border-radius: 6px; }
+.mini-hero { background: var(--forest); color: #fff; padding: 18px; }
+.mini-hero b { font-family: var(--display); font-size: 20px; display: block; }
+.mini-hero small { color: #cbd5ce; }
+.mini-menu { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px; }
+.mini-menu div { border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; font-size: 13px; }
+.mini-menu div b { display: block; font-size: 13.5px; }
+.mini-cta { margin: 0 12px 14px; background: var(--wa); color: #fff; text-align: center; padding: 9px; border-radius: 10px; font-weight: 700; font-size: 13.5px; }
+
+.sectors { display: flex; flex-wrap: wrap; gap: 10px; }
+.sectors span { background: var(--card); border: 1px solid var(--line); padding: 8px 16px; border-radius: 999px; font-weight: 500; font-size: 15.5px; }
+
+.prices { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; align-items: stretch; }
+.price { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px; display: flex; flex-direction: column; gap: 14px; }
+.price.star { border: 2px solid var(--forest); position: relative; }
+.price.star .badge { position: absolute; top: -13px; left: 24px; }
+.price h3 { font-size: 22px; }
+.amount { font-family: var(--display); font-size: 34px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.amount small { font-family: var(--body); font-size: 15px; font-weight: 500; color: var(--muted); }
+.price ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 15.5px; flex: 1; }
+.price li { display: flex; gap: 10px; }
+.price li::before { content: ""; flex: none; width: 18px; height: 18px; margin-top: 3px; border-radius: 50%; background: var(--forest) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%23f2b705' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat; }
+.price-note { margin-top: 18px; color: var(--muted); font-size: 15px; }
+
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; counter-reset: step; }
+.step { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+.step .n { font-family: var(--display); font-weight: 800; font-size: 15px; color: var(--ink); background: var(--plantain); width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 12px; }
+.step h3 { font-size: 19px; margin-bottom: 6px; }
+.step p { color: var(--muted); font-size: 15.5px; }
+.step .when { display: inline-block; margin-top: 10px; font-size: 13.5px; font-weight: 700; color: var(--forest); }
+
+.guarantees { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 28px; }
+.guarantees div { border-left: 4px solid var(--plantain); padding: 4px 0 4px 14px; }
+.guarantees b { display: block; font-size: 17px; }
+.guarantees span { color: var(--muted); font-size: 15px; }
+
+.testi { background: var(--card); border: 2px dashed var(--line); border-radius: 20px; padding: 30px; display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center; }
+@media (max-width: 760px) { .testi { grid-template-columns: 1fr; } }
+.testi .big { font-family: var(--display); font-weight: 800; font-size: 54px; color: var(--forest); line-height: 1; }
+.testi h3 { font-size: 22px; margin-bottom: 6px; }
+.testi p { color: var(--muted); }
+
+.faq { display: grid; gap: 10px; max-width: 820px; }
+.faq details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 20px; }
+.faq summary { cursor: pointer; font-weight: 700; font-size: 17px; list-style: none; display: flex; justify-content: space-between; gap: 12px; }
+.faq summary::after { content: "+"; font-family: var(--display); font-size: 22px; line-height: 1; color: var(--forest); }
+.faq details[open] summary::after { content: "–"; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq details p { margin-top: 10px; color: var(--muted); font-size: 15.5px; }
+
+/* Booking */
+.booking { background: var(--forest); color: #f4f2e8; }
+.booking .wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: start; }
+@media (max-width: 860px) { .booking .wrap { grid-template-columns: 1fr; } }
+.booking h2 { font-size: clamp(30px, 4.4vw, 44px); font-weight: 800; }
+.booking .sub { color: #d3dcd5; margin: 14px 0 22px; font-size: 18px; }
+.contact-lines { display: grid; gap: 12px; font-size: 16px; }
+.contact-lines div { display: flex; gap: 12px; align-items: center; }
+.contact-lines b { color: #fff; }
+.dotbox { width: 38px; height: 38px; flex: none; border-radius: 10px; background: rgba(255,255,255,.1); display: grid; place-items: center; }
+form.rdv { background: var(--card); color: var(--ink); border-radius: 20px; padding: 26px; display: grid; gap: 14px; }
+form.rdv h3 { font-size: 22px; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 520px) { .row2 { grid-template-columns: 1fr; } }
+form.rdv label { display: grid; gap: 5px; font-size: 14px; font-weight: 500; }
+form.rdv input, form.rdv select, form.rdv textarea { border: 1.5px solid var(--line); border-radius: 10px; padding: 11px 12px; background: var(--paper); color: var(--ink); width: 100%; }
+form.rdv textarea { min-height: 80px; resize: vertical; }
+fieldset { border: 0; padding: 0; margin: 0; }
+legend { font-size: 14px; font-weight: 500; margin-bottom: 6px; padding: 0; }
+.slots { display: flex; gap: 8px; flex-wrap: wrap; }
+.slots label { display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid var(--line); border-radius: 999px; padding: 7px 14px; cursor: pointer; font-weight: 500; }
+.slots input { width: auto; accent-color: var(--forest); }
+.slots label:has(input:checked) { border-color: var(--forest); background: #e5efe9; }
+.form-error { color: #b42318; font-size: 14px; min-height: 1em; }
+.form-hint { font-size: 13px; color: var(--muted); }
+
+footer { background: #0a2b20; color: #aebcb3; padding: 32px 0; font-size: 14.5px; }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+footer b { color: #fff; }
+
+.float-wa { position: fixed; right: 16px; bottom: 16px; z-index: 40; background: var(--wa); color: #fff; text-decoration: none; font-weight: 700; padding: 12px 18px; border-radius: 999px; box-shadow: 0 10px 24px rgba(0,0,0,.25); display: inline-flex; align-items: center; gap: 8px; }
+.float-wa svg { width: 20px; height: 20px; }
+
+/* Modal */
+.modal-back { position: fixed; inset: 0; background: rgba(10,20,16,.6); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 60; }
+.modal-back.show { display: flex; }
+.modal { background: var(--card); border-radius: 18px; max-width: 460px; width: 100%; padding: 22px; display: grid; gap: 12px; }
+.modal h3 { font-size: 22px; }
+.modal pre { background: #e7f6ec; border-left: 4px solid var(--wa); border-radius: 10px; padding: 12px 14px; white-space: pre-wrap; font-family: var(--body); font-size: 14.5px; margin: 0; max-height: 45vh; overflow: auto; }
+.modal .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-light { background: var(--paper); color: var(--ink); border: 1.5px solid var(--line); }
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Vitrine 237, accueil">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#175a43"/><rect x="14" y="22" width="36" height="28" rx="3" fill="#f6f5ee"/><rect x="11" y="14" width="42" height="10" rx="2" fill="#f2b705"/><rect x="19.4" y="14" width="8.4" height="10" fill="#fff"/><rect x="36.2" y="14" width="8.4" height="10" fill="#fff"/><rect x="20" y="31" width="24" height="13" rx="2" fill="#0f3d2e"/></svg>
+      Vitrine <b>237</b>
+    </a>
+    <nav class="links" aria-label="Sections">
+      <a href="#services">Services</a>
+      <a href="#realisation">Réalisation</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#methode">Comment ça marche</a>
+      <a href="#faq">Questions</a>
+    </nav>
+    <a class="head-cta" href="#rendez-vous">Prendre rendez-vous</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Yaoundé · Douala · Livré en 72 h</span>
+        <h1>Vos clients vous cherchent en ligne. <em>Soyez&#8209;y en 72 heures.</em></h1>
+        <p class="lead">Nous créons pour les restaurants, cliniques, écoles et boutiques un site web professionnel, un WhatsApp qui répond automatiquement et une fiche Google Maps complète. Vous continuez votre travail, vos clients vous trouvent.</p>
+        <div class="ctas">
+          <a class="btn btn-yellow" href="#rendez-vous">Prendre rendez-vous gratuitement</a>
+          <a class="btn btn-outline" href="#realisation">Voir un exemple</a>
+        </div>
+        <div class="proof">
+          <div><b>72 h</b>du rendez-vous à la mise en ligne</div>
+          <div><b>50 / 50</b>acompte, puis solde à la livraison</div>
+          <div><b>Orange Money · MoMo</b>paiement local</div>
+        </div>
+      </div>
+      <div>
+        <div class="phone" role="img" aria-label="Exemple de conversation WhatsApp avec réponse automatique">
+          <div class="screen">
+            <div class="chat-head"><span class="av">RB</span><div>Restaurant de Bastos<small>Compte professionnel</small></div></div>
+            <div class="chat">
+              <div class="msg in">Bonsoir, vous livrez à Mvan ce soir ?<span class="t">22:47</span></div>
+              <div class="msg out"><span class="auto">Réponse automatique</span>Bonsoir ! Merci pour votre message. Nous livrons à Mvan jusqu'à 23 h. Voici notre menu : votre-restaurant.com 🍽️ Choisissez vos plats, la commande arrive ici directement.<span class="t">22:47</span></div>
+              <div class="msg in">Parfait, je commande 2 poulets DG<span class="t">22:49</span></div>
+              <div class="msg out">C'est noté, 12 000 FCFA livraison incluse. Merci ! 🙏<span class="t">22:50</span></div>
+            </div>
+          </div>
+        </div>
+        <p class="mock-note">Illustration : un exemple de ce que vos clients voient</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Combien de clients perdez-vous chaque semaine ?</h2>
+        <p>Trois situations que tous les commerçants de Yaoundé et Douala connaissent.</p>
+      </div>
+      <div class="pains">
+        <div class="pain">
+          <h3>« Je n'ai pas pu répondre à temps »</h3>
+          <p>Un client écrit pendant le rush ou tard le soir. Sans réponse, il commande ailleurs.</p>
+          <p class="fix">Votre WhatsApp répond tout de suite, 24 h/24.</p>
+        </div>
+        <div class="pain">
+          <h3>« J'envoie les mêmes photos 20 fois par jour »</h3>
+          <p>Menu, prix, localisation : vous répétez tout à chaque nouveau client.</p>
+          <p class="fix">Un seul lien avec tout, toujours à jour.</p>
+        </div>
+        <div class="pain">
+          <h3>« On ne me trouve pas sur Google »</h3>
+          <p>Les nouveaux clients cherchent sur leur téléphone avant de se déplacer.</p>
+          <p class="fix">Une fiche Google Maps complète et un vrai site.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Ce que nous faisons pour votre commerce</h2>
+        <p>Tout est préparé pour vous : vous nous donnez vos photos et vos prix, nous nous occupons du reste.</p>
+      </div>
+      <div class="services">
+        <article class="service">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f2b705" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 8h18M8 21h8M12 18v3"/></svg></div>
+          <h3>Site web professionnel</h3>
+          <p>Une page claire, rapide sur téléphone, à votre nom.</p>
+          <ul><li>Menu, services ou catalogue avec prix</li><li>Horaires, localisation, photos</li><li>Bouton « Commander sur WhatsApp »</li></ul>
+        </article>
+        <article class="service">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f2b705" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/><path d="M9 10h6M9 14h4"/></svg></div>
+          <h3>WhatsApp automatisé</h3>
+          <p>Votre WhatsApp Business configuré pour vendre.</p>
+          <ul><li>Message d'accueil et d'absence</li><li>Réponses rapides aux questions fréquentes</li><li>Catalogue produits et étiquettes clients</li></ul>
+        </article>
+        <article class="service">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f2b705" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></div>
+          <h3>Google Maps</h3>
+          <p>Votre fiche Google Business créée ou complétée.</p>
+          <ul><li>Adresse et repère précis</li><li>Photos, horaires, numéro</li><li>Lien vers votre site</li></ul>
+        </article>
+        <article class="service">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#f2b705" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><path d="M17 7h.01"/></svg></div>
+          <h3>Réseaux sociaux</h3>
+          <p>Facebook et Instagram animés chaque mois.</p>
+          <ul><li>12 publications par mois</li><li>Textes et visuels préparés</li><li>Vous validez avant publication</li></ul>
+        </article>
+        <article class="service soon">
+          <span class="badge">Bientôt · sur devis</span>
+          <h3>Réceptionniste IA sur WhatsApp</h3>
+          <p>Un assistant intelligent qui répond à vos clients, prend les réservations et les commandes, de jour comme de nuit. Disponible à partir de décembre pour quelques établissements pilotes.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="realisation">
+    <div class="wrap">
+      <div class="work">
+        <div>
+          <span class="eyebrow">Exemple de réalisation</span>
+          <h3>Un site de restaurant avec commande WhatsApp</h3>
+          <p>Nous avons créé ce site de démonstration pour un restaurant fictif. Ouvrez-le sur votre téléphone, ajoutez des plats et appuyez sur « Commander » : la commande arrive rédigée sur WhatsApp.</p>
+          <ul><li>Menu par catégories avec prix en FCFA</li><li>Panier, livraison ou à emporter</li><li>Horaires et statut « ouvert / fermé » automatique</li></ul>
+          <a class="btn btn-yellow" href="/exemple/">Tester le site exemple</a>
+        </div>
+        <div class="browser" aria-hidden="true">
+          <div class="bar"><i></i><i></i><i></i><span>votre-restaurant.com</span></div>
+          <div class="mini-hero"><b>Ebènè · Cuisine du pays</b><small>Ouvert, commandes jusqu'à 23 h</small></div>
+          <div class="mini-menu">
+            <div><b>Ndolé crevettes</b>4 500 FCFA</div>
+            <div><b>Poulet DG</b>6 000 FCFA</div>
+            <div><b>Bar braisé</b>7 000 FCFA</div>
+            <div><b>Jus de foléré</b>1 000 FCFA</div>
+          </div>
+          <div class="mini-cta">Commander sur WhatsApp</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Pour tous les commerces qui reçoivent des clients</h2>
+      </div>
+      <div class="sectors">
+        <span>Restaurants et fast-foods</span><span>Cliniques et cabinets</span><span>Laboratoires</span><span>Écoles privées</span><span>Centres de formation</span><span>Hôtels et appartements meublés</span><span>Salons de beauté</span><span>Boutiques de mode</span><span>Pâtisseries</span><span>Quincailleries</span><span>Pièces auto</span><span>Pharmacies</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="tarifs">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Des prix clairs, payables en Mobile Money</h2>
+        <p>Prix de lancement valables jusqu'au 30 novembre 2026.</p>
+      </div>
+      <div class="prices">
+        <article class="price">
+          <h3>Démarrage WhatsApp</h3>
+          <div class="amount">30 000 <small>FCFA</small></div>
+          <ul><li>WhatsApp Business configuré</li><li>Message d'accueil et d'absence</li><li>10 réponses rapides rédigées</li><li>Catalogue produits</li><li>Fiche Google Maps</li></ul>
+          <a class="btn btn-dark" href="#rendez-vous" data-pack="Démarrage WhatsApp">Choisir ce pack</a>
+        </article>
+        <article class="price star">
+          <span class="badge">Le plus choisi</span>
+          <h3>Vitrine Pro</h3>
+          <div class="amount">80 000 <small>FCFA</small></div>
+          <ul><li>Site web professionnel à votre nom</li><li>Bouton de commande WhatsApp</li><li>WhatsApp Business automatisé</li><li>Fiche Google Maps complète</li><li>Livré en 72 h, une série de corrections incluse</li></ul>
+          <a class="btn btn-yellow" href="#rendez-vous" data-pack="Vitrine Pro">Choisir ce pack</a>
+        </article>
+        <article class="price">
+          <h3>Réseaux sociaux</h3>
+          <div class="amount">60 000 <small>FCFA / mois</small></div>
+          <ul><li>12 publications par mois</li><li>Textes et visuels préparés</li><li>Calendrier validé avec vous</li><li>Facebook et Instagram</li><li>Sans engagement</li></ul>
+          <a class="btn btn-dark" href="#rendez-vous" data-pack="Réseaux sociaux">Choisir ce pack</a>
+        </article>
+      </div>
+      <p class="price-note">Nom de domaine personnalisé (ex. : monrestaurant.com) en option, au prix coûtant, environ 6 000 à 10 000 FCFA par an.</p>
+    </div>
+  </section>
+
+  <section class="alt" id="methode">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Comment ça marche</h2>
+        <p>Vous y consacrez environ 15 minutes au total.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="n">1</div><h3>Rendez-vous de 15 min</h3><p>Chez vous ou par téléphone. On comprend votre commerce et vos clients.</p><span class="when">Jour 1</span></div>
+        <div class="step"><div class="n">2</div><h3>Vos informations</h3><p>Logo, photos, prix, horaires. Pas de photos ? Nous vous guidons pour les prendre au téléphone.</p><span class="when">Jour 1</span></div>
+        <div class="step"><div class="n">3</div><h3>Maquette à valider</h3><p>Vous recevez votre site sur WhatsApp et demandez vos corrections.</p><span class="when">Jour 2</span></div>
+        <div class="step"><div class="n">4</div><h3>Mise en ligne</h3><p>Site publié, WhatsApp configuré, Google Maps à jour. Vous payez le solde.</p><span class="when">Jour 3</span></div>
+      </div>
+      <div class="guarantees">
+        <div><b>Vous validez avant de payer le solde</b><span>La maquette ne vous plaît pas ? Nous la refaisons.</span></div>
+        <div><b>Délai tenu</b><span>72 h après réception de vos informations.</span></div>
+        <div><b>Vous restez propriétaire</b><span>Votre site et vos contenus vous appartiennent.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="temoignages">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Témoignages clients</h2>
+      </div>
+      <div class="testi">
+        <div class="big">1<sup style="font-size:24px">er</sup></div>
+        <div>
+          <h3>Votre commerce pourrait être le premier présenté ici</h3>
+          <p>Vitrine 237 démarre ce mois-ci à Yaoundé et Douala. Les avis de nos premiers clients seront publiés ici, avec leur accord, dès la livraison de leur site. Pour lancer l'activité, les premiers commerces profitent du prix de lancement.</p>
+        </div>
+        <a class="btn btn-dark" href="#rendez-vous">En profiter</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="faq">
+    <div class="wrap">
+      <div class="sec-head"><h2>Vos questions</h2></div>
+      <div class="faq">
+        <details><summary>Je n'y connais rien en informatique. C'est un problème ?</summary><p>Non. Vous nous envoyez vos photos et vos prix sur WhatsApp, nous faisons tout le reste. Pour modifier un prix plus tard, un simple message suffit.</p></details>
+        <details><summary>Est-ce que je dois payer un hébergement chaque mois ?</summary><p>Non, l'hébergement du site est gratuit. Seul le nom de domaine personnalisé (optionnel) coûte environ 6 000 à 10 000 FCFA par an.</p></details>
+        <details><summary>Je n'ai pas de belles photos de mon commerce.</summary><p>Nous vous expliquons comment prendre de bonnes photos avec votre téléphone, en 10 minutes.</p></details>
+        <details><summary>Comment se passe le paiement ?</summary><p>50 % d'acompte au démarrage, 50 % à la livraison, par Orange Money, MTN MoMo ou en espèces.</p></details>
+        <details><summary>J'ai déjà une page Facebook. Pourquoi un site ?</summary><p>Facebook est utile, mais vos clients ne vous y trouvent pas depuis Google, et la page ne vous appartient pas. Le site rassemble tout dans un seul lien que vous partagez partout, y compris sur Facebook.</p></details>
+        <details><summary>Vous intervenez où ?</summary><p>À Yaoundé et à Douala, sur place ou à distance. Pour les autres villes, tout se fait par WhatsApp.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking" id="rendez-vous">
+    <div class="wrap">
+      <div>
+        <h2>Prenez rendez-vous, c'est gratuit</h2>
+        <p class="sub">15 minutes pour voir ce que nous pouvons faire pour votre commerce. Sans engagement.</p>
+        <div class="contact-lines">
+          <div><span class="dotbox"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f2b705" stroke-width="2" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg></span><span>WhatsApp et appels : <b>+237 682 32 28 42</b></span></div>
+          <div><span class="dotbox"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f2b705" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><span>Yaoundé et Douala, sur place ou à distance</span></div>
+          <div><span class="dotbox"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f2b705" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span>Du lundi au samedi, 8 h – 19 h</span></div>
+        </div>
+      </div>
+      <form class="rdv" id="rdvForm" novalidate>
+        <h3>Demande de rendez-vous</h3>
+        <div class="row2">
+          <label for="f-name">Votre nom<input id="f-name" autocomplete="name" placeholder="Ex. : Mme Ngo"></label>
+          <label for="f-biz">Nom du commerce<input id="f-biz" placeholder="Ex. : Restaurant Le Palmier"></label>
+        </div>
+        <div class="row2">
+          <label for="f-city">Ville
+            <select id="f-city"><option>Yaoundé</option><option>Douala</option><option>Autre ville</option></select>
+          </label>
+          <label for="f-type">Type de commerce
+            <select id="f-type"><option>Restaurant</option><option>Clinique / cabinet</option><option>École / formation</option><option>Hôtel / meublé</option><option>Salon / boutique</option><option>Autre</option></select>
+          </label>
+        </div>
+        <div class="row2">
+          <label for="f-pack">Ce qui vous intéresse
+            <select id="f-pack"><option>Vitrine Pro</option><option>Démarrage WhatsApp</option><option>Réseaux sociaux</option><option>Réceptionniste IA</option><option>Je ne sais pas encore</option></select>
+          </label>
+          <label for="f-day">Jour souhaité<input id="f-day" type="date"></label>
+        </div>
+        <fieldset>
+          <legend>Moment de la journée</legend>
+          <div class="slots">
+            <label><input type="radio" name="slot" value="le matin (8 h – 12 h)" checked> Matin</label>
+            <label><input type="radio" name="slot" value="l'après-midi (12 h – 16 h)"> Après-midi</label>
+            <label><input type="radio" name="slot" value="en fin de journée (16 h – 19 h)"> Fin de journée</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Format</legend>
+          <div class="slots">
+            <label><input type="radio" name="fmt" value="sur place, dans mon commerce" checked> Sur place</label>
+            <label><input type="radio" name="fmt" value="par appel téléphonique"> Par téléphone</label>
+          </div>
+        </fieldset>
+        <label for="f-msg">Un mot sur votre besoin (facultatif)<textarea id="f-msg" placeholder="Ex. : je veux que mes clients puissent commander sur WhatsApp"></textarea></label>
+        <p class="form-error" id="formError" role="alert"></p>
+        <button class="btn btn-wa" type="submit">Envoyer ma demande sur WhatsApp</button>
+        <p class="form-hint">Votre demande s'ouvre dans WhatsApp, déjà rédigée. Nous confirmons l'heure exacte par retour de message.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>Vitrine 237</b> · Sites web et WhatsApp pour les commerces de Yaoundé et Douala</div>
+    <div>WhatsApp : +237 682 32 28 42</div>
+  </div>
+</footer>
+
+<a class="float-wa" id="floatWa" href="#" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp au +237 682 32 28 42">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg>
+  WhatsApp
+</a>
+
+<div class="modal-back" id="modalBack" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <h3 id="modalTitle">Votre demande est prête</h3>
+    <p style="color:var(--muted);font-size:15px">Voici le message qui sera envoyé à Vitrine 237 :</p>
+    <pre id="preview"></pre>
+    <div class="actions">
+      <a class="btn btn-wa" id="waLink" href="#" target="_blank" rel="noopener">Ouvrir WhatsApp</a>
+      <button class="btn btn-light" type="button" id="closeBtn">Modifier</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const WA = "237682322842";
+const wa = text => `https://wa.me/${WA}?text=${encodeURIComponent(text)}`;
+
+document.getElementById("floatWa").href = wa("Bonjour Vitrine 237, je voudrais des informations pour mon commerce.");
+
+// Min date = today
+const day = document.getElementById("f-day");
+try {
+  const t = new Date(); t.setMinutes(t.getMinutes() - t.getTimezoneOffset());
+  day.min = t.toISOString().slice(0, 10);
+} catch (e) {}
+
+// Pack buttons preselect the form
+document.querySelectorAll("[data-pack]").forEach(a => a.addEventListener("click", () => {
+  document.getElementById("f-pack").value = a.dataset.pack;
+}));
+
+function fmtDate(v) {
+  if (!v) return "dès que possible";
+  const [y, m, d] = v.split("-").map(Number);
+  const dt = new Date(y, m - 1, d);
+  return dt.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
+}
+
+const modal = document.getElementById("modalBack");
+document.getElementById("rdvForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const name = document.getElementById("f-name").value.trim();
+  const biz = document.getElementById("f-biz").value.trim();
+  const err = document.getElementById("formError");
+  if (!name || !biz) {
+    err.textContent = "Indiquez votre nom et le nom de votre commerce pour envoyer la demande.";
+    (name ? document.getElementById("f-biz") : document.getElementById("f-name")).focus();
+    return;
+  }
+  err.textContent = "";
+  const slot = document.querySelector('input[name="slot"]:checked').value;
+  const fmt = document.querySelector('input[name="fmt"]:checked').value;
+  const note = document.getElementById("f-msg").value.trim();
+  let msg = `Bonjour Vitrine 237, je souhaite un rendez-vous.\n\n`;
+  msg += `Nom : ${name}\nCommerce : ${biz} (${document.getElementById("f-type").value})\n`;
+  msg += `Ville : ${document.getElementById("f-city").value}\n`;
+  msg += `Intérêt : ${document.getElementById("f-pack").value}\n`;
+  msg += `Disponibilité : ${fmtDate(day.value)}, ${slot}\nFormat : ${fmt}`;
+  if (note) msg += `\n\nMon besoin : ${note}`;
+  document.getElementById("preview").textContent = msg;
+  document.getElementById("waLink").href = wa(msg);
+  modal.classList.add("show");
+  document.getElementById("waLink").focus();
+});
+document.getElementById("closeBtn").addEventListener("click", () => modal.classList.remove("show"));
+modal.addEventListener("click", e => { if (e.target === modal) modal.classList.remove("show"); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") modal.classList.remove("show"); });
+</script>
+</body>
+</html>

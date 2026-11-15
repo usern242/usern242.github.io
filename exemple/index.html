@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ebènè Cuisine du pays · exemple Vitrine 237</title>
+<link rel="icon" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: bandeau démo, hero vert, menu en grille de cartes, panier fixe en bas sur mobile / colonne à droite sur grand écran. Single theme by choice (brand world). */
+:root {
+  --forest: #0f3d2e;
+  --forest-2: #175a43;
+  --plantain: #f2b705;
+  --pepper: #c8321e;
+  --paper: #f6f5ee;
+  --card: #ffffff;
+  --ink: #13221c;
+  --muted: #56655e;
+  --line: #dfe3d9;
+  --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --body: "DM Sans", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; text-wrap: balance; margin: 0; }
+a { color: inherit; }
+button, input, select { font: inherit; }
+:focus-visible { outline: 3px solid var(--plantain); outline-offset: 2px; }
+
+.demo-bar { background: var(--ink); color: #e9ece6; font-size: 13.5px; padding: 8px 16px; text-align: center; }
+.demo-bar strong { color: var(--plantain); }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+header.hero { background: var(--forest); color: #f4f2e8; position: relative; overflow: hidden; }
+.hero::after { content: ""; position: absolute; right: -110px; bottom: -120px; width: 320px; height: 320px; border-radius: 50%; background: radial-gradient(circle, var(--plantain) 0 34%, transparent 35%), radial-gradient(circle, transparent 0 52%, rgba(242,183,5,.25) 53% 56%, transparent 57%); opacity: .9; pointer-events: none; }
+.hero .wrap { padding-top: 28px; padding-bottom: 40px; position: relative; z-index: 1; }
+.top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.logo { font-family: var(--display); font-weight: 800; font-size: 26px; letter-spacing: -.5px; }
+.logo span { color: var(--plantain); }
+.status { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); padding: 5px 12px; border-radius: 999px; font-size: 14px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: #9aa59f; }
+.dot.open { background: #4ade80; box-shadow: 0 0 0 4px rgba(74,222,128,.25); }
+.hero h1 { font-size: clamp(36px, 6vw, 60px); font-weight: 800; margin-top: 36px; max-width: 14ch; letter-spacing: -1px; }
+.hero p.lead { font-size: 18px; max-width: 46ch; color: #d6ddd7; margin: 14px 0 24px; }
+.cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 12px; padding: 13px 20px; font-weight: 700; cursor: pointer; text-decoration: none; }
+.btn-primary { background: var(--plantain); color: var(--ink); }
+.btn-primary:hover { background: #ffc81f; }
+.btn-ghost { background: transparent; color: #f4f2e8; border: 1.5px solid rgba(255,255,255,.4); }
+.btn-ghost:hover { border-color: #fff; }
+.facts { display: flex; gap: 28px; flex-wrap: wrap; margin-top: 30px; font-size: 14.5px; color: #c9d3cc; }
+.facts b { display: block; color: #fff; font-family: var(--display); font-size: 20px; }
+
+main .wrap { display: grid; grid-template-columns: 1fr 340px; gap: 32px; padding-top: 40px; padding-bottom: 120px; align-items: start; }
+@media (max-width: 900px) { main .wrap { grid-template-columns: 1fr; } }
+
+.section-title { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.section-title h2 { font-size: 30px; }
+.section-title p { margin: 0; color: var(--muted); font-size: 14.5px; }
+
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.tab { border: 1.5px solid var(--line); background: var(--card); color: var(--ink); padding: 7px 14px; border-radius: 999px; cursor: pointer; font-weight: 500; font-size: 14.5px; }
+.tab[aria-pressed="true"] { background: var(--forest); color: #fff; border-color: var(--forest); }
+
+.menu { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+.dish { background: var(--card); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+.dish .art { height: 92px; position: relative; }
+.dish .art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.dish .tag { position: absolute; left: 12px; top: 10px; background: rgba(19,34,28,.78); color: #fff; font-size: 12px; padding: 3px 9px; border-radius: 999px; }
+.dish .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.dish h3 { font-size: 19px; }
+.dish p { margin: 0; color: var(--muted); font-size: 14.5px; flex: 1; }
+.dish .row { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
+.price { font-weight: 700; font-variant-numeric: tabular-nums; }
+.add { background: var(--forest); color: #fff; border: 0; border-radius: 10px; padding: 8px 14px; font-weight: 700; cursor: pointer; }
+.add:hover { background: var(--forest-2); }
+.qty { display: inline-flex; align-items: center; gap: 4px; background: var(--paper); border-radius: 10px; padding: 3px; }
+.qty button { width: 32px; height: 32px; border: 0; border-radius: 8px; background: var(--card); cursor: pointer; font-weight: 700; font-size: 17px; }
+.qty span { min-width: 22px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+.info { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 40px; }
+.info .box { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+.info h3 { font-size: 18px; margin-bottom: 8px; }
+.info ul { list-style: none; padding: 0; margin: 0; font-size: 14.5px; }
+.info li { display: flex; justify-content: space-between; gap: 10px; padding: 4px 0; border-bottom: 1px dashed var(--line); }
+.info li:last-child { border-bottom: 0; }
+.info li span:last-child { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.info li.today { font-weight: 700; color: var(--forest); }
+.info p { margin: 0; font-size: 14.5px; color: var(--muted); }
+
+aside.cart { position: sticky; top: 20px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px; }
+.cart h2 { font-size: 22px; margin-bottom: 12px; }
+.cart-empty { color: var(--muted); font-size: 14.5px; margin: 0 0 12px; }
+.cart-lines { list-style: none; padding: 0; margin: 0 0 12px; font-size: 14.5px; }
+.cart-lines li { display: flex; justify-content: space-between; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.totals { font-size: 14.5px; display: grid; gap: 4px; margin-bottom: 14px; font-variant-numeric: tabular-nums; }
+.totals div { display: flex; justify-content: space-between; }
+.totals .grand { font-size: 18px; font-weight: 700; padding-top: 6px; border-top: 2px solid var(--ink); }
+form.order { display: grid; gap: 10px; }
+form.order label { font-size: 13.5px; font-weight: 500; display: grid; gap: 4px; }
+form.order input, form.order select { border: 1.5px solid var(--line); border-radius: 10px; padding: 10px 12px; background: var(--paper); color: var(--ink); }
+.btn-wa { background: #1fa855; color: #fff; width: 100%; font-size: 16px; }
+.btn-wa:hover { background: #178f47; }
+.btn-wa[disabled] { background: #a9b8ae; cursor: not-allowed; }
+.hint { font-size: 12.5px; color: var(--muted); margin: 4px 0 0; }
+
+.mobile-bar { display: none; }
+@media (max-width: 900px) {
+  aside.cart { position: static; }
+  .mobile-bar { display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 20; background: var(--ink); color: #fff; border-radius: 14px; padding: 12px 16px; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+  .mobile-bar.hidden { display: none; }
+  .mobile-bar a { background: var(--plantain); color: var(--ink); text-decoration: none; padding: 9px 14px; border-radius: 10px; font-weight: 700; }
+}
+
+footer { background: var(--forest); color: #d6ddd7; padding: 36px 0; font-size: 14.5px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; align-items: center; }
+footer .pitch { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); border-radius: 14px; padding: 14px 18px; }
+footer .pitch b { color: var(--plantain); }
+
+.modal-back { position: fixed; inset: 0; background: rgba(10,20,16,.6); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 50; }
+.modal-back.show { display: flex; }
+.modal { background: var(--card); border-radius: 18px; max-width: 460px; width: 100%; padding: 22px; display: grid; gap: 12px; }
+.modal h2 { font-size: 22px; }
+.modal pre { background: #e7f6ec; border-left: 4px solid #1fa855; border-radius: 10px; padding: 12px 14px; white-space: pre-wrap; font-family: var(--body); font-size: 14.5px; margin: 0; max-height: 45vh; overflow: auto; }
+.modal .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-light { background: var(--paper); color: var(--ink); border: 1.5px solid var(--line); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .add, .btn, .tab { transition: background-color .15s ease, border-color .15s ease; }
+}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">Site de démonstration réalisé par Vitrine 237 : <strong>Ebènè est un restaurant fictif</strong>. Testez la commande, elle arrive sur le WhatsApp de Vitrine 237.</div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="top">
+      <div class="logo">Ebè<span>nè</span></div>
+      <div class="status" id="status"><span class="dot" id="statusDot"></span><span id="statusText">Horaires</span></div>
+    </div>
+    <h1>La cuisine du pays, livrée chaude à Akwa</h1>
+    <p class="lead">Ndolé, poulet DG, poisson braisé et eru, préparés chaque jour. Choisissez vos plats, la commande arrive directement sur notre WhatsApp.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#menu">Voir le menu et commander</a>
+      <a class="btn btn-ghost" href="#infos">Horaires et livraison</a>
+    </div>
+    <div class="facts">
+      <div><b>35–45 min</b>livraison à Akwa et Bonanjo</div>
+      <div><b>1 000 FCFA</b>frais de livraison</div>
+      <div><b>Orange Money · MoMo</b>ou espèces</div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <section id="menu" aria-labelledby="menuTitle">
+      <div class="section-title">
+        <h2 id="menuTitle">Le menu du jour</h2>
+        <p>Prix en FCFA, portion pour 1 personne</p>
+      </div>
+      <div class="tabs" role="group" aria-label="Filtrer le menu" id="tabs"></div>
+      <div class="menu" id="menuGrid"></div>
+
+      <div class="info" id="infos">
+        <div class="box">
+          <h3>Horaires</h3>
+          <ul id="hours"></ul>
+        </div>
+        <div class="box">
+          <h3>Livraison</h3>
+          <ul>
+            <li><span>Akwa, Bonanjo</span><span>1 000 FCFA</span></li>
+            <li><span>Bonapriso, Deïdo</span><span>1 000 FCFA</span></li>
+            <li><span>Bali, New Bell</span><span>1 500 FCFA</span></li>
+            <li><span>À emporter</span><span>Gratuit</span></li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>Nous trouver</h3>
+          <p>Akwa, Douala. Adresse fictive pour la démonstration : sur un vrai site, ici s'affichent l'adresse, un repère connu et le lien Google Maps.</p>
+        </div>
+      </div>
+    </section>
+
+    <aside class="cart" id="cart" aria-labelledby="cartTitle">
+      <h2 id="cartTitle">Votre commande</h2>
+      <p class="cart-empty" id="cartEmpty">Ajoutez des plats depuis le menu.</p>
+      <ul class="cart-lines" id="cartLines"></ul>
+      <div class="totals" id="totals" hidden>
+        <div><span>Plats</span><span id="subTotal">0 FCFA</span></div>
+        <div><span>Livraison</span><span id="fee">1 000 FCFA</span></div>
+        <div class="grand"><span>Total</span><span id="grandTotal">0 FCFA</span></div>
+      </div>
+      <form class="order" id="orderForm" novalidate>
+        <label for="name">Votre nom
+          <input id="name" name="name" autocomplete="name" placeholder="Ex. : Paul">
+        </label>
+        <label for="mode">Livraison ou à emporter
+          <select id="mode" name="mode">
+            <option value="delivery">Livraison</option>
+            <option value="pickup">À emporter</option>
+          </select>
+        </label>
+        <label for="address" id="addressLabel">Quartier et repère
+          <input id="address" name="address" placeholder="Ex. : Bonapriso, derrière la pharmacie">
+        </label>
+        <button class="btn btn-wa" id="sendBtn" type="submit" disabled>Commander sur WhatsApp</button>
+        <p class="hint">Votre commande s'ouvre dans WhatsApp, déjà rédigée. Il ne reste qu'à l'envoyer.</p>
+      </form>
+    </aside>
+  </div>
+</main>
+
+<div class="mobile-bar hidden" id="mobileBar">
+  <span id="mobileSummary">0 plat · 0 FCFA</span>
+  <a href="#cart">Voir ma commande</a>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>© Ebènè, restaurant fictif de démonstration</div>
+    <div class="pitch"><b>Vous voulez le même site pour votre commerce ?</b><br>Site + WhatsApp automatisé + Google Maps, livré en 72 h par <a href="/">Vitrine 237</a> · WhatsApp +237 682 32 28 42</div>
+  </div>
+</footer>
+
+<div class="modal-back" id="modalBack" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <h2 id="modalTitle">Votre commande est prête</h2>
+    <p style="margin:0;color:var(--muted);font-size:14.5px">Voici le message qui arrivera sur le WhatsApp du restaurant :</p>
+    <pre id="preview"></pre>
+    <div class="actions">
+      <a class="btn btn-wa" id="waLink" href="#" target="_blank" rel="noopener" style="width:auto">Ouvrir WhatsApp</a>
+      <button class="btn btn-light" type="button" id="copyBtn">Copier le message</button>
+      <button class="btn btn-light" type="button" id="closeBtn">Fermer</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Numéro WhatsApp du restaurant, format international sans "+" (ex. "2376XXXXXXXX").
+// Vide = WhatsApp demande à qui envoyer le message (pratique pour la démo).
+const WHATSAPP_NUMBER = "237682322842";
+const DELIVERY_FEE = 1000;
+
+const MENU = [
+  { id: "ndole", cat: "Plats", name: "Ndolé crevettes", desc: "Feuilles de ndolé, arachides et crevettes, avec miondo ou plantain mûr.", price: 4500, tag: "Le plus commandé", colors: ["#1f5e3a", "#7a9a3c"] },
+  { id: "dg", cat: "Plats", name: "Poulet DG", desc: "Poulet sauté, plantain frit, carottes et haricots verts.", price: 6000, tag: "", colors: ["#c8321e", "#f2b705"] },
+  { id: "bar", cat: "Plats", name: "Bar braisé", desc: "Poisson entier braisé, sauce pimentée, bâton de manioc ou frites de plantain.", price: 7000, tag: "Grand appétit", colors: ["#8a5a2b", "#e3a33b"] },
+  { id: "eru", cat: "Plats", name: "Eru & water fufu", desc: "Eru, waterleaf, peau de bœuf et poisson fumé.", price: 3500, tag: "", colors: ["#2f6b2a", "#a7c957"] },
+  { id: "mbongo", cat: "Plats", name: "Mbongo tchobi", desc: "Sauce noire épicée au poisson, servie avec plantain vapeur.", price: 5500, tag: "Spécialité", colors: ["#2b2420", "#7d5a3c"] },
+  { id: "koki", cat: "Entrées", name: "Koki", desc: "Gâteau de haricots à l'huile rouge, cuit en feuilles de bananier.", price: 2000, tag: "", colors: ["#d9731a", "#f2b705"] },
+  { id: "bhb", cat: "Entrées", name: "Beignets haricots bouillie", desc: "Le classique du matin : beignets, haricots et bouillie de maïs.", price: 1500, tag: "", colors: ["#e0a526", "#f6e1a3"] },
+  { id: "folere", cat: "Boissons", name: "Jus de foléré", desc: "Bissap maison, frais, peu sucré. 50 cl.", price: 1000, tag: "", colors: ["#7a1f3d", "#c8321e"] },
+  { id: "gingembre", cat: "Boissons", name: "Jus de gingembre", desc: "Gingembre frais et citron, bien relevé. 50 cl.", price: 1000, tag: "", colors: ["#c9a227", "#f2e394"] }
+];
+
+const HOURS = [
+  ["Dimanche", 12, 22], ["Lundi", 10, 23], ["Mardi", 10, 23], ["Mercredi", 10, 23],
+  ["Jeudi", 10, 23], ["Vendredi", 10, 24], ["Samedi", 10, 24]
+];
+
+const cart = {};
+let filter = "Tout";
+const fmt = n => n.toLocaleString("fr-FR").replace(/ | /g, " ") + " FCFA";
+
+function art(colors, seed) {
+  const [a, b] = colors;
+  let circles = "";
+  for (let i = 0; i < 5; i++) {
+    const x = (seed * 37 + i * 61) % 100, y = (seed * 17 + i * 29) % 100, r = 10 + ((seed + i * 7) % 18);
+    circles += `<circle cx="${x}%" cy="${y}%" r="${r}" fill="${b}" opacity="${0.35 + (i % 3) * 0.2}"/>`;
+  }
+  return `<svg viewBox="0 0 300 92" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="300" height="92" fill="${a}"/>${circles}</svg>`;
+}
+
+function renderTabs() {
+  const cats = ["Tout", ...new Set(MENU.map(m => m.cat))];
+  document.getElementById("tabs").innerHTML = cats.map(c =>
+    `<button class="tab" type="button" aria-pressed="${c === filter}" data-cat="${c}">${c}</button>`).join("");
+}
+
+function renderMenu() {
+  const grid = document.getElementById("menuGrid");
+  grid.innerHTML = MENU.filter(m => filter === "Tout" || m.cat === filter).map((m, i) => {
+    const q = cart[m.id] || 0;
+    const control = q
+      ? `<div class="qty"><button type="button" data-dec="${m.id}" aria-label="Retirer un ${m.name}">−</button><span>${q}</span><button type="button" data-inc="${m.id}" aria-label="Ajouter un ${m.name}">+</button></div>`
+      : `<button class="add" type="button" data-inc="${m.id}">Ajouter</button>`;
+    return `<article class="dish">
+      <div class="art">${art(m.colors, i + m.name.length)}${m.tag ? `<span class="tag">${m.tag}</span>` : ""}</div>
+      <div class="body"><h3>${m.name}</h3><p>${m.desc}</p>
+      <div class="row"><span class="price">${fmt(m.price)}</span>${control}</div></div></article>`;
+  }).join("");
+}
+
+function lines() {
+  return MENU.filter(m => cart[m.id]).map(m => ({ ...m, q: cart[m.id] }));
+}
+
+function renderCart() {
+  const ls = lines();
+  const count = ls.reduce((s, l) => s + l.q, 0);
+  const sub = ls.reduce((s, l) => s + l.q * l.price, 0);
+  const delivery = document.getElementById("mode").value === "delivery";
+  const fee = count && delivery ? DELIVERY_FEE : 0;
+  document.getElementById("cartEmpty").hidden = count > 0;
+  document.getElementById("totals").hidden = count === 0;
+  document.getElementById("cartLines").innerHTML = ls.map(l =>
+    `<li><span>${l.q} × ${l.name}</span><span>${fmt(l.q * l.price)}</span></li>`).join("");
+  document.getElementById("subTotal").textContent = fmt(sub);
+  document.getElementById("fee").textContent = delivery ? fmt(DELIVERY_FEE) : "Gratuit";
+  document.getElementById("grandTotal").textContent = fmt(sub + fee);
+  document.getElementById("sendBtn").disabled = count === 0;
+  const bar = document.getElementById("mobileBar");
+  bar.classList.toggle("hidden", count === 0);
+  document.getElementById("mobileSummary").textContent = `${count} plat${count > 1 ? "s" : ""} · ${fmt(sub + fee)}`;
+  document.getElementById("addressLabel").hidden = !delivery;
+}
+
+function renderHours() {
+  const now = new Date();
+  const douala = new Date(now.getTime() + (now.getTimezoneOffset() + 60) * 60000);
+  const d = douala.getDay(), h = douala.getHours() + douala.getMinutes() / 60;
+  document.getElementById("hours").innerHTML = [1, 2, 3, 4, 5, 6, 0].map(i => {
+    const [n, o, c] = HOURS[i];
+    return `<li class="${i === d ? "today" : ""}"><span>${n}</span><span>${o} h – ${c === 24 ? "minuit" : c + " h"}</span></li>`;
+  }).join("");
+  const [, o, c] = HOURS[d];
+  const open = h >= o && h < c;
+  document.getElementById("statusDot").classList.toggle("open", open);
+  document.getElementById("statusText").textContent = open
+    ? `Ouvert, commandes jusqu'à ${c === 24 ? "minuit" : c + " h"}`
+    : `Fermé, ouverture à ${(h < o ? o : HOURS[(d + 1) % 7][1])} h`;
+}
+
+function buildMessage() {
+  const ls = lines();
+  const delivery = document.getElementById("mode").value === "delivery";
+  const sub = ls.reduce((s, l) => s + l.q * l.price, 0);
+  const name = document.getElementById("name").value.trim() || "(à compléter)";
+  const addr = document.getElementById("address").value.trim() || "(à compléter)";
+  let msg = "Bonjour Ebènè ! Je voudrais commander :\n";
+  ls.forEach(l => { msg += `• ${l.q} × ${l.name} (${fmt(l.q * l.price)})\n`; });
+  msg += `\nTotal : ${fmt(sub + (delivery ? DELIVERY_FEE : 0))}${delivery ? " (livraison incluse)" : ""}\n`;
+  msg += `Nom : ${name}\n`;
+  msg += delivery ? `Livraison à : ${addr}` : "À emporter";
+  return msg;
+}
+
+document.addEventListener("click", e => {
+  const t = e.target.closest("[data-inc],[data-dec],[data-cat]");
+  if (!t) return;
+  if (t.dataset.cat) { filter = t.dataset.cat; renderTabs(); renderMenu(); return; }
+  const id = t.dataset.inc || t.dataset.dec;
+  cart[id] = Math.max(0, (cart[id] || 0) + (t.dataset.inc ? 1 : -1));
+  if (!cart[id]) delete cart[id];
+  renderMenu(); renderCart();
+});
+
+document.getElementById("mode").addEventListener("change", renderCart);
+
+const modal = document.getElementById("modalBack");
+document.getElementById("orderForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const msg = buildMessage();
+  document.getElementById("preview").textContent = msg;
+  const base = WHATSAPP_NUMBER ? `https://wa.me/${WHATSAPP_NUMBER}` : "https://wa.me/";
+  document.getElementById("waLink").href = `${base}?text=${encodeURIComponent(msg)}`;
+  modal.classList.add("show");
+  document.getElementById("waLink").focus();
+});
+document.getElementById("closeBtn").addEventListener("click", () => modal.classList.remove("show"));
+modal.addEventListener("click", e => { if (e.target === modal) modal.classList.remove("show"); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") modal.classList.remove("show"); });
+document.getElementById("copyBtn").addEventListener("click", async () => {
+  const btn = document.getElementById("copyBtn");
+  try { await navigator.clipboard.writeText(buildMessage()); btn.textContent = "Message copié"; }
+  catch { btn.textContent = "Copie impossible, sélectionnez le texte"; }
+  setTimeout(() => { btn.textContent = "Copier le message"; }, 2500);
+});
+
+renderTabs(); renderMenu(); renderCart(); renderHours();
+</script>
+</body>
+</html>

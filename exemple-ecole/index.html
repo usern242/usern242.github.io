@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complexe Scolaire Bilingue La Lanterne · exemple Vitrine 237</title>
+<link rel="icon" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* Layout: bandeau démo, hero sombre avec motif, grille de prestations avec prix, raisons, horaires + formulaire de RDV qui compose un message WhatsApp. Single theme by choice (brand world). */
+:root {
+  --bg: #f7f6f0; --ink: #14213d; --muted: #5a6478; --accent: #1d3fa0; --accent-2: #e8edfa;
+  --card: #ffffff; --line: #dfe3ec; --hero: #14213d; --hero-ink: #eef1f8; --pop: #ffc93c;
+  --display: 'Fraunces', Georgia, serif; --body: 'Nunito Sans', "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.12; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; }
+:focus-visible { outline: 3px solid var(--pop); outline-offset: 2px; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+.demo-bar { background: #111; color: #eee; font-size: 13.5px; text-align: center; padding: 8px 16px; }
+.demo-bar a { color: #ffd75e; font-weight: 700; }
+
+header.top { background: var(--hero); color: var(--hero-ink); }
+header.top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 12px; height: 64px; }
+.name { font-family: var(--display); font-weight: 800; font-size: 21px; }
+.name span { color: var(--pop); }
+.btn { display: inline-flex; align-items: center; justify-content: center; border: 0; border-radius: 12px; padding: 13px 20px; font-weight: 700; text-decoration: none; cursor: pointer; font-size: 16px; }
+.btn-pop { background: var(--pop); color: #111; }
+.btn-ghost { border: 1.5px solid rgba(255,255,255,.4); color: var(--hero-ink); background: transparent; }
+.btn-accent { background: var(--accent); color: #fff; }
+.btn-wa { background: #1fa855; color: #fff; width: 100%; }
+.btn-sm { padding: 9px 14px; font-size: 14.5px; }
+
+.hero { background: var(--hero); color: var(--hero-ink); position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; inset: 0; opacity: .14; pointer-events: none; }
+.m-cross::before { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cpath d='M24 18h8v6h6v8h-6v6h-8v-6h-6v-8h6z' fill='%23ffffff'/%3E%3C/svg%3E"); }
+.m-dots::before { background-image: radial-gradient(circle, #fff 1.6px, transparent 1.8px); background-size: 22px 22px; }
+.m-lines::before { background-image: repeating-linear-gradient(135deg, #fff 0 2px, transparent 2px 26px); }
+.hero .wrap { position: relative; padding-top: 56px; padding-bottom: 60px; }
+.kind { display: inline-block; font-size: 14px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: var(--pop); margin-bottom: 14px; }
+.hero h1 { font-size: clamp(34px, 5.4vw, 56px); font-weight: 800; max-width: 18ch; }
+.hero .lead { font-size: 19px; max-width: 54ch; margin: 18px 0 26px; opacity: .9; }
+.ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.facts { display: flex; gap: 30px; flex-wrap: wrap; margin-top: 30px; font-size: 14.5px; opacity: .92; }
+.facts b { display: block; font-family: var(--display); font-size: 20px; color: #fff; }
+
+section { padding: 64px 0; }
+.sec-title { font-size: clamp(26px, 3.6vw, 36px); font-weight: 800; margin-bottom: 26px; }
+.svcs { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.svc { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; display: grid; grid-template-columns: 1fr auto; gap: 10px 14px; align-items: start; }
+.svc h3 { font-size: 19px; }
+.svc p { color: var(--muted); font-size: 15px; margin-top: 4px; }
+.price { font-weight: 800; color: var(--accent); white-space: nowrap; font-variant-numeric: tabular-nums; text-align: right; }
+.price small { font-weight: 600; color: var(--muted); font-size: 13px; }
+.pick { grid-column: 1 / -1; justify-self: start; background: var(--accent-2); color: var(--accent); border: 0; border-radius: 10px; padding: 7px 14px; font-weight: 700; cursor: pointer; }
+.pick:hover { background: var(--accent); color: #fff; }
+
+.alt { background: var(--accent-2); }
+.whys { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.why { background: var(--card); border-radius: 16px; padding: 22px; border-top: 4px solid var(--accent); }
+.why h3 { font-size: 19px; margin-bottom: 8px; }
+.why p { color: var(--muted); font-size: 15.5px; }
+
+.book .wrap { display: grid; grid-template-columns: .85fr 1.15fr; gap: 32px; align-items: start; }
+@media (max-width: 860px) { .book .wrap { grid-template-columns: 1fr; } }
+.hours { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+.hours h3 { font-size: 20px; margin-bottom: 10px; }
+.hours ul { list-style: none; padding: 0; margin: 0 0 16px; }
+.hours li { display: flex; justify-content: space-between; gap: 10px; padding: 7px 0; border-bottom: 1px dashed var(--line); font-size: 15.5px; }
+.hours li span:last-child { font-weight: 700; white-space: nowrap; }
+.hours .addr { color: var(--muted); font-size: 14.5px; }
+form.rdv { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: grid; gap: 14px; }
+form.rdv h3 { font-size: 22px; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 520px) { .row2 { grid-template-columns: 1fr; } }
+form.rdv label { display: grid; gap: 5px; font-size: 14px; font-weight: 600; }
+form.rdv input, form.rdv select { border: 1.5px solid var(--line); border-radius: 10px; padding: 11px 12px; background: var(--bg); color: var(--ink); width: 100%; }
+fieldset { border: 0; padding: 0; margin: 0; }
+legend { font-size: 14px; font-weight: 600; margin-bottom: 6px; padding: 0; }
+.slots { display: flex; flex-wrap: wrap; gap: 8px; }
+.slots label { display: inline-flex !important; align-items: center; gap: 6px; border: 1.5px solid var(--line); border-radius: 999px; padding: 7px 14px; cursor: pointer; font-weight: 600; }
+.slots input { width: auto !important; accent-color: var(--accent); }
+.slots label:has(input:checked) { border-color: var(--accent); background: var(--accent-2); }
+.err { color: #b42318; font-size: 14px; min-height: 1em; }
+.hint { font-size: 13px; color: var(--muted); }
+
+footer { background: var(--hero); color: var(--hero-ink); padding: 30px 0; font-size: 14.5px; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+.pitch { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.2); border-radius: 14px; padding: 12px 16px; }
+.pitch a { color: var(--pop); font-weight: 700; }
+
+.modal-back { position: fixed; inset: 0; background: rgba(0,0,0,.55); display: none; align-items: center; justify-content: center; padding: 16px; z-index: 50; }
+.modal-back.show { display: flex; }
+.modal { background: #fff; border-radius: 18px; max-width: 460px; width: 100%; padding: 22px; display: grid; gap: 12px; color: #111; }
+.modal h3 { font-size: 22px; }
+.modal pre { background: #e7f6ec; border-left: 4px solid #1fa855; border-radius: 10px; padding: 12px 14px; white-space: pre-wrap; font-family: var(--body); font-size: 14.5px; margin: 0; max-height: 45vh; overflow: auto; }
+.modal .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.btn-light { background: #f2f2f2; color: #111; }
+</style>
+</head>
+<body>
+<div class="demo-bar">Site de démonstration réalisé par <a href="/">Vitrine 237</a> : Complexe Scolaire Bilingue La Lanterne est un établissement fictif. Les demandes arrivent sur le WhatsApp de Vitrine 237.</div>
+
+<header class="top">
+  <div class="wrap">
+    <div class="name">La Lanterne<span>.</span></div>
+    <a class="btn btn-pop btn-sm" href="#rdv">Demander une visite ou une inscription</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero m-lines">
+    <div class="wrap">
+      <span class="kind">Complexe Scolaire Bilingue La Lanterne</span>
+      <h1>Apprendre en français et en anglais, dès la maternelle.</h1>
+      <p class="lead">Maternelle, primaire et collège bilingues à Odza. Inscriptions 2026-2027 ouvertes : demandez une visite de l&#x27;école sur WhatsApp.</p>
+      <div class="ctas">
+        <a class="btn btn-pop" href="#rdv">Demander une visite ou une inscription</a>
+        <a class="btn btn-ghost" href="#services">Voir les tarifs</a>
+      </div>
+      <div class="facts"><div><b>Classes</b>25 élèves maximum</div><div><b>Cantine</b>et transport scolaire</div><div><b>Paiement</b>en 3 tranches</div></div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <h2 class="sec-title">Nos cycles et frais de scolarité</h2>
+      <div class="svcs"><article class="svc"><div><h3>Maternelle</h3><p>Petite, moyenne et grande section</p></div><div class="price">150 000 / an<small> FCFA</small></div><button class="pick" type="button" data-svc="Maternelle">Choisir</button></article><article class="svc"><div><h3>Primaire</h3><p>Du CP au CM2 / Class 1 à 6</p></div><div class="price">180 000 / an<small> FCFA</small></div><button class="pick" type="button" data-svc="Primaire">Choisir</button></article><article class="svc"><div><h3>Collège</h3><p>De la 6e à la 3e / Form 1 à 5</p></div><div class="price">250 000 / an<small> FCFA</small></div><button class="pick" type="button" data-svc="Collège">Choisir</button></article><article class="svc"><div><h3>Cantine</h3><p>Repas chaud chaque midi</p></div><div class="price">dès 15 000 / mois<small> FCFA</small></div><button class="pick" type="button" data-svc="Cantine">Choisir</button></article><article class="svc"><div><h3>Transport scolaire</h3><p>Ramassage dans les quartiers voisins</p></div><div class="price">dès 20 000 / mois<small> FCFA</small></div><button class="pick" type="button" data-svc="Transport scolaire">Choisir</button></article><article class="svc"><div><h3>Cours de soutien</h3><p>Mercredi après-midi et samedi</p></div><div class="price">10 000 / mois<small> FCFA</small></div><button class="pick" type="button" data-svc="Cours de soutien">Choisir</button></article></div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <h2 class="sec-title">Pourquoi nous choisir</h2>
+      <div class="whys"><div class="why"><h3>Vraiment bilingue</h3><p>Chaque classe a un enseignant francophone et un enseignant anglophone.</p></div><div class="why"><h3>Suivi des parents</h3><p>Notes, absences et annonces envoyées sur WhatsApp.</p></div><div class="why"><h3>Effectifs réduits</h3><p>25 élèves maximum par classe pour un vrai suivi.</p></div></div>
+    </div>
+  </section>
+
+  <section class="book" id="rdv">
+    <div class="wrap">
+      <div class="hours">
+        <h3>Horaires</h3>
+        <ul><li><span>Lundi – vendredi</span><span>7 h 30 – 15 h 30</span></li><li><span>Secrétariat</span><span>Lun – sam, 8 h – 16 h</span></li><li><span>Visites</span><span>Sur rendez-vous</span></li></ul>
+        <p class="addr">Odza, Yaoundé (adresse fictive pour la démonstration)</p>
+      </div>
+      <form class="rdv" id="rdvForm" novalidate>
+        <h3>Demander une visite ou une inscription</h3>
+        <label for="f-choice">Cycle concerné<select id="f-choice"><option>Maternelle</option><option>Primaire</option><option>Collège</option><option>Cantine</option><option>Transport scolaire</option><option>Cours de soutien</option></select></label>
+        <div class="row2">
+          <label for="f-name">Votre nom<input id="f-name" autocomplete="name" placeholder="Ex. : Mme Ngo"></label>
+          <label for="f-day">Jour souhaité<input id="f-day" type="date"></label>
+        </div>
+        <fieldset><legend>Moment de la visite</legend><div class="slots"><label><input type="radio" name="slot" value="matin" checked> Matin</label><label><input type="radio" name="slot" value="après-midi"> Après-midi</label></div></fieldset>
+        <p class="err" id="err" role="alert"></p>
+        <button class="btn btn-wa" type="submit">Envoyer sur WhatsApp</button>
+        <p class="hint">Votre demande s'ouvre dans WhatsApp, déjà rédigée. Nous confirmons l'heure par retour de message.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© Complexe Scolaire Bilingue La Lanterne · établissement fictif de démonstration</div>
+    <div class="pitch">Le même site pour votre école en 72 h : <a href="/">Vitrine 237</a> · WhatsApp +237 682 32 28 42</div>
+  </div>
+</footer>
+
+<div class="modal-back" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+  <div class="modal">
+    <h3 id="mTitle">Votre demande est prête</h3>
+    <pre id="preview"></pre>
+    <div class="actions">
+      <a class="btn btn-wa" id="waLink" href="#" target="_blank" rel="noopener" style="width:auto">Ouvrir WhatsApp</a>
+      <button class="btn btn-light" type="button" id="closeBtn">Modifier</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const WA = "237682322842", GREET = "Bonjour Complexe Scolaire La Lanterne, je souhaite des informations pour une inscription.";
+const day = document.getElementById("f-day");
+try { const t = new Date(); t.setMinutes(t.getMinutes() - t.getTimezoneOffset()); day.min = t.toISOString().slice(0, 10); } catch (e) {}
+document.querySelectorAll("[data-svc]").forEach(b => b.addEventListener("click", () => {
+  document.getElementById("f-choice").value = b.dataset.svc;
+  document.getElementById("rdv").scrollIntoView();
+  document.getElementById("f-name").focus();
+}));
+function fmtDate(v) {
+  if (!v) return "dès que possible";
+  const [y, m, d] = v.split("-").map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" });
+}
+const modal = document.getElementById("modal");
+document.getElementById("rdvForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const name = document.getElementById("f-name").value.trim();
+  if (!name) { document.getElementById("err").textContent = "Indiquez votre nom pour envoyer la demande."; document.getElementById("f-name").focus(); return; }
+  document.getElementById("err").textContent = "";
+  const slot = document.querySelector('input[name="slot"]:checked').value;
+  const msg = `${GREET}\n\n${document.querySelector('label[for="f-choice"]').firstChild.textContent.trim()} : ${document.getElementById("f-choice").value}\nNom : ${name}\nDisponibilité : ${fmtDate(day.value)}, ${slot}`;
+  document.getElementById("preview").textContent = msg;
+  document.getElementById("waLink").href = `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
+  modal.classList.add("show");
+  document.getElementById("waLink").focus();
+});
+document.getElementById("closeBtn").addEventListener("click", () => modal.classList.remove("show"));
+modal.addEventListener("click", e => { if (e.target === modal) modal.classList.remove("show"); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") modal.classList.remove("show"); });
+</script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Christian Baloken · Réalisations Vitrine 237</title>
+<meta name="description" content="Christian Baloken, fondateur de Vitrine 237 : sites web, WhatsApp automatisé et Google Maps pour les commerces de Yaoundé et Douala.">
+<meta property="og:title" content="Christian Baloken · Réalisations Vitrine 237">
+<meta property="og:description" content="Sites web avec commande et rendez-vous WhatsApp pour restaurants, cliniques, salons et écoles. Livré en 72 h.">
+<link rel="icon" href="/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: en-tête Vitrine 237, hero portrait (photo + présentation), grille de réalisations avec captures, méthode, atouts, contact WhatsApp. Single theme by choice (brand world, same as the main site). */
+:root {
+  --forest: #0f3d2e; --forest-2: #175a43; --plantain: #f2b705; --paper: #f6f5ee; --card: #ffffff;
+  --ink: #13221c; --muted: #56655e; --line: #dde2d7; --wa: #1fa855;
+  --display: "Bricolage Grotesque", "Inter Display", "Trebuchet MS", system-ui, sans-serif;
+  --body: "DM Sans", "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.1; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+:focus-visible { outline: 3px solid var(--plantain); outline-offset: 2px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+
+.site-head { position: sticky; top: 0; z-index: 30; background: rgba(15,61,46,.97); color: #f4f2e8; }
+.site-head .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: var(--display); font-weight: 800; font-size: 21px; }
+.brand svg { width: 34px; height: 34px; }
+.brand b { color: var(--plantain); }
+nav.links { display: flex; gap: 22px; font-size: 15px; }
+nav.links a { text-decoration: none; color: #cdd7d0; }
+nav.links a:hover, nav.links a[aria-current] { color: #fff; }
+.head-cta { background: var(--plantain); color: var(--ink); text-decoration: none; font-weight: 700; padding: 9px 16px; border-radius: 10px; font-size: 15px; white-space: nowrap; }
+@media (max-width: 760px) { nav.links { display: none; } }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 12px; padding: 14px 22px; font-weight: 700; text-decoration: none; cursor: pointer; font-size: 16px; }
+.btn-yellow { background: var(--plantain); color: var(--ink); }
+.btn-yellow:hover { background: #ffc81f; }
+.btn-outline { border: 1.5px solid rgba(255,255,255,.45); color: #f4f2e8; }
+.btn-wa { background: var(--wa); color: #fff; }
+.btn-wa:hover { background: #178f47; }
+
+.hero { background: var(--forest); color: #f4f2e8; overflow: hidden; padding: 0; }
+.hero .wrap { display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px; align-items: center; padding-top: 56px; padding-bottom: 56px; }
+@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; gap: 24px; padding-top: 28px; padding-bottom: 44px; } }
+.eyebrow { display: inline-block; background: rgba(242,183,5,.15); color: var(--plantain); border: 1px solid rgba(242,183,5,.4); padding: 4px 12px; border-radius: 999px; font-size: 14px; font-weight: 500; margin-bottom: 16px; }
+.hero h1 { font-size: clamp(36px, 5.4vw, 56px); font-weight: 800; letter-spacing: -1px; }
+.hero h1 em { font-style: normal; color: var(--plantain); }
+.hero .lead { color: #d3dcd5; font-size: 18.5px; margin: 18px 0 14px; max-width: 56ch; }
+.hero .lead + .lead { margin-top: 0; }
+.hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+.portrait { position: relative; justify-self: center; width: 100%; max-width: 380px; }
+.portrait img { border-radius: 24px; aspect-ratio: 4 / 5; object-fit: cover; width: 100%; height: auto; box-shadow: 0 24px 50px rgba(0,0,0,.35); }
+.portrait .tag { position: absolute; left: -12px; bottom: 22px; background: var(--plantain); color: var(--ink); font-weight: 700; font-size: 14.5px; padding: 8px 14px; border-radius: 12px; box-shadow: 0 8px 18px rgba(0,0,0,.2); }
+.portrait .tag small { display: block; font-weight: 500; font-size: 12.5px; }
+@media (max-width: 860px) { .portrait { order: -1; max-width: 210px; justify-self: start; } .portrait .tag { left: auto; right: -14px; bottom: 14px; font-size: 13px; padding: 6px 10px; } }
+
+section { padding: 72px 0; }
+section.alt { background: #eef0e7; }
+.sec-head { max-width: 700px; margin-bottom: 34px; }
+.sec-head h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; letter-spacing: -.5px; }
+.sec-head p { color: var(--muted); margin-top: 12px; font-size: 18px; }
+
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+.filters button { border: 1.5px solid var(--line); background: var(--card); color: var(--ink); padding: 7px 15px; border-radius: 999px; cursor: pointer; font-weight: 500; font-size: 15px; font-family: var(--body); }
+.filters button[aria-pressed="true"] { background: var(--forest); color: #fff; border-color: var(--forest); }
+
+.works { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 22px; }
+.work { background: var(--card); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column; }
+.work[hidden] { display: none; }
+.shot { position: relative; background: #e5e8e1; aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid var(--line); }
+.shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.badge { position: absolute; top: 12px; left: 12px; font-size: 12.5px; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+.badge.real { background: var(--plantain); color: var(--ink); }
+.badge.demo { background: rgba(19,34,28,.82); color: #fff; }
+.work .body { padding: 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.sector { font-size: 13.5px; font-weight: 700; color: var(--forest-2); text-transform: uppercase; letter-spacing: .5px; }
+.work h3 { font-size: 22px; }
+.work p { color: var(--muted); font-size: 15.5px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 6px; padding: 0; list-style: none; }
+.chips li { background: #eef0e7; border-radius: 999px; padding: 3px 10px; font-size: 13px; font-weight: 500; }
+.work .go { margin-top: auto; align-self: flex-start; color: var(--forest); font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--plantain); padding-bottom: 1px; }
+.work .go:hover { color: var(--forest-2); }
+.note { margin-top: 22px; color: var(--muted); font-size: 15px; max-width: 70ch; }
+
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.step { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+.step .n { font-family: var(--display); font-weight: 800; color: var(--ink); background: var(--plantain); width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 12px; }
+.step h3 { font-size: 19px; margin-bottom: 6px; }
+.step p { color: var(--muted); font-size: 15.5px; }
+
+.assets { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+.asset { border-left: 4px solid var(--plantain); padding: 4px 0 4px 16px; }
+.asset b { display: block; font-size: 18px; margin-bottom: 4px; }
+.asset span { color: var(--muted); font-size: 15.5px; }
+
+.contact { background: var(--forest); color: #f4f2e8; text-align: left; }
+.contact .wrap { display: flex; justify-content: space-between; align-items: center; gap: 28px; flex-wrap: wrap; }
+.contact h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; max-width: 20ch; }
+.contact p { color: #d3dcd5; margin-top: 10px; }
+.contact .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+footer { background: #0a2b20; color: #aebcb3; padding: 26px 0; font-size: 14.5px; }
+footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+footer a { color: #fff; }
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Vitrine 237, accueil">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#175a43"/><rect x="14" y="22" width="36" height="28" rx="3" fill="#f6f5ee"/><rect x="11" y="14" width="42" height="10" rx="2" fill="#f2b705"/><rect x="19.4" y="14" width="8.4" height="10" fill="#fff"/><rect x="36.2" y="14" width="8.4" height="10" fill="#fff"/><rect x="20" y="31" width="24" height="13" rx="2" fill="#0f3d2e"/></svg>
+      Vitrine <b>237</b>
+    </a>
+    <nav class="links" aria-label="Navigation">
+      <a href="/">Accueil</a>
+      <a href="/realisations/" aria-current="page">Réalisations</a>
+      <a href="/#tarifs">Tarifs</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="head-cta" id="headWa" href="#contact">Me contacter</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Fondateur de Vitrine 237 · Yaoundé</span>
+        <h1>Christian Baloken. <em>Je mets les commerces camerounais en ligne.</em></h1>
+        <p class="lead">J'aime imaginer, concevoir et construire des sites qui allient esthétique, simplicité et efficacité. Chaque projet est pour moi l'occasion de transformer une idée en une expérience fluide, intuitive et accessible à tous.</p>
+        <p class="lead">Avec Vitrine 237, j'aide les restaurants, cliniques, salons et écoles de Yaoundé et Douala à être trouvés sur Google et à recevoir leurs commandes et rendez-vous directement sur WhatsApp.</p>
+        <div class="ctas">
+          <a class="btn btn-yellow" href="#realisations">Voir mes réalisations</a>
+          <a class="btn btn-outline" href="#contact">Parlons de votre projet</a>
+        </div>
+      </div>
+      <figure class="portrait" style="margin:0">
+        <img src="img/christian.jpg" alt="Portrait de Christian Baloken" width="525" height="720">
+        <figcaption class="tag">Christian Baloken<small>Yaoundé · Douala</small></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="realisations">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Réalisations</h2>
+        <p>Le site de Vitrine 237 et quatre sites de démonstration, un par type de commerce. Ouvrez-les sur votre téléphone : tous les boutons fonctionnent.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filtrer les réalisations">
+        <button type="button" data-f="all" aria-pressed="true">Tout</button>
+        <button type="button" data-f="restauration" aria-pressed="false">Restauration</button>
+        <button type="button" data-f="sante" aria-pressed="false">Santé</button>
+        <button type="button" data-f="beaute" aria-pressed="false">Beauté</button>
+        <button type="button" data-f="education" aria-pressed="false">Éducation</button>
+      </div>
+      <div class="works">
+        <article class="work" data-cat="all">
+          <div class="shot"><img src="img/vitrine237.jpg" alt="Page d'accueil du site Vitrine 237" loading="lazy" width="800" height="500"><span class="badge real">Projet réel</span></div>
+          <div class="body">
+            <span class="sector">Agence · services aux entreprises</span>
+            <h3>Vitrine 237</h3>
+            <p>Le site de mon agence : offres, tarifs, FAQ et prise de rendez-vous qui arrive rédigée sur WhatsApp.</p>
+            <ul class="chips"><li>Prise de RDV WhatsApp</li><li>Tarifs</li><li>FAQ</li></ul>
+            <a class="go" href="/">Voir le site →</a>
+          </div>
+        </article>
+        <article class="work" data-cat="restauration">
+          <div class="shot"><img src="img/ebene.jpg" alt="Site de démonstration du restaurant Ebènè" loading="lazy" width="800" height="500"><span class="badge demo">Démonstration</span></div>
+          <div class="body">
+            <span class="sector">Restaurant</span>
+            <h3>Ebènè, cuisine du pays</h3>
+            <p>Menu avec prix, panier et commande envoyée directement sur WhatsApp, livraison ou à emporter.</p>
+            <ul class="chips"><li>Panier</li><li>Commande WhatsApp</li><li>Ouvert / fermé auto</li></ul>
+            <a class="go" href="/exemple/">Voir le site →</a>
+          </div>
+        </article>
+        <article class="work" data-cat="sante">
+          <div class="shot"><img src="img/clinique.jpg" alt="Site de démonstration du Centre Médical Les Manguiers" loading="lazy" width="800" height="500"><span class="badge demo">Démonstration</span></div>
+          <div class="body">
+            <span class="sector">Clinique</span>
+            <h3>Centre Médical Les Manguiers</h3>
+            <p>Consultations et examens avec tarifs, horaires et prise de rendez-vous en 1 minute sur WhatsApp.</p>
+            <ul class="chips"><li>Rendez-vous WhatsApp</li><li>Tarifs</li><li>Horaires</li></ul>
+            <a class="go" href="/exemple-clinique/">Voir le site →</a>
+          </div>
+        </article>
+        <article class="work" data-cat="beaute">
+          <div class="shot"><img src="img/salon.jpg" alt="Site de démonstration du salon Maison Nyanga Beauté" loading="lazy" width="800" height="500"><span class="badge demo">Démonstration</span></div>
+          <div class="body">
+            <span class="sector">Salon de beauté</span>
+            <h3>Maison Nyanga Beauté</h3>
+            <p>Prestations et prix, réservation de créneau sur WhatsApp pour ne plus faire attendre les clientes.</p>
+            <ul class="chips"><li>Réservation</li><li>Prestations</li><li>7 j/7</li></ul>
+            <a class="go" href="/exemple-salon/">Voir le site →</a>
+          </div>
+        </article>
+        <article class="work" data-cat="education">
+          <div class="shot"><img src="img/ecole.jpg" alt="Site de démonstration du Complexe Scolaire La Lanterne" loading="lazy" width="800" height="500"><span class="badge demo">Démonstration</span></div>
+          <div class="body">
+            <span class="sector">École privée</span>
+            <h3>Complexe Scolaire La Lanterne</h3>
+            <p>Cycles et frais de scolarité, demande de visite ou d'inscription envoyée aux parents sur WhatsApp.</p>
+            <ul class="chips"><li>Inscriptions</li><li>Frais de scolarité</li><li>Visites</li></ul>
+            <a class="go" href="/exemple-ecole/">Voir le site →</a>
+          </div>
+        </article>
+      </div>
+      <p class="note">Les sites marqués « Démonstration » présentent des établissements fictifs, créés pour montrer ce que nous livrons dans chaque secteur. Les vrais projets clients seront ajoutés ici, avec leur accord, dès leur mise en ligne.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Comment je travaille</h2>
+        <p>Vous y consacrez environ 15 minutes. Je m'occupe du reste.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="n">1</div><h3>On se rencontre</h3><p>15 minutes chez vous ou au téléphone pour comprendre votre commerce et vos clients.</p></div>
+        <div class="step"><div class="n">2</div><h3>Vous m'envoyez l'essentiel</h3><p>Logo, photos, prix et horaires, directement sur WhatsApp.</p></div>
+        <div class="step"><div class="n">3</div><h3>Vous validez la maquette</h3><p>Vous voyez votre site sur votre téléphone et demandez vos corrections.</p></div>
+        <div class="step"><div class="n">4</div><h3>Mise en ligne en 72 h</h3><p>Site publié, WhatsApp configuré, Google Maps à jour.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><h2>Pourquoi travailler avec moi</h2></div>
+      <div class="assets">
+        <div class="asset"><b>Je suis sur place</b><span>Basé à Yaoundé, je me déplace dans votre commerce, à Yaoundé comme à Douala.</span></div>
+        <div class="asset"><b>Des prix clairs</b><span>Dès 30 000 FCFA, payables en deux fois par Orange Money ou MTN MoMo.</span></div>
+        <div class="asset"><b>Rapide grâce aux bons outils</b><span>Je m'appuie sur des outils modernes, dont l'intelligence artificielle, pour livrer en 72 h.</span></div>
+        <div class="asset"><b>Pensé pour le téléphone</b><span>Vos clients sont sur WhatsApp : chaque site est conçu d'abord pour le mobile.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div>
+        <h2>Votre commerce mérite d'être trouvé.</h2>
+        <p>Écrivez-moi sur WhatsApp au <b>+237 682 32 28 42</b>. Je réponds personnellement.</p>
+      </div>
+      <div class="ctas">
+        <a class="btn btn-wa" id="contactWa" href="#" target="_blank" rel="noopener">Écrire sur WhatsApp</a>
+        <a class="btn btn-yellow" href="/#rendez-vous">Prendre rendez-vous</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© Christian Baloken · <a href="/">Vitrine 237</a></div>
+    <div>Yaoundé · Douala · WhatsApp +237 682 32 28 42</div>
+  </div>
+</footer>
+
+<script>
+const waHref = "https://wa.me/237682322842?text=" + encodeURIComponent("Bonjour Christian, j'ai vu vos réalisations et je voudrais parler de mon projet.");
+document.getElementById("contactWa").href = waHref;
+const head = document.getElementById("headWa");
+head.href = waHref; head.target = "_blank"; head.rel = "noopener";
+const btns = document.querySelectorAll(".filters button");
+btns.forEach(b => b.addEventListener("click", () => {
+  btns.forEach(x => x.setAttribute("aria-pressed", String(x === b)));
+  const f = b.dataset.f;
+  document.querySelectorAll(".work").forEach(w => { w.hidden = !(f === "all" || w.dataset.cat === f || w.dataset.cat === "all" && f === "all"); });
+}));
+</script>
+</body>
+</html>
